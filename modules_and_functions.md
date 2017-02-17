@@ -61,6 +61,7 @@ IO.puts Math.zero?([1, 2, 3]) #=> ** (FunctionClauseError)
 IO.puts Math.zero?(0.0)       #=> ** (FunctionClauseError)
 ```
 ----
+
 名前付き関数は、`do ~ end`以外にも`do:`で中身を定義できる
 即ち上記の関数定義は、下のようにも定義可能
 ```
@@ -86,6 +87,7 @@ iex> fun.(0)
 true
 ```
 ----
+
 `&`キャプチャ演算子は、無名関数をつくる場合にも用いることが出来る
 ```
 iex> fun = &(&1 + 1)
@@ -95,7 +97,9 @@ iex> fun.(1)
 ```
 上記の例で、`&1`は関数に渡される第1引数を表す
 つまり、この関数定義は `fn x -> x + 1 end`と同じ
+
 ----
+
 モジュール関数をキャプチャしたい場合は`&Module.function()`のように定義する
 ```
 iex> fun = &List.flatten(&1, &2)
