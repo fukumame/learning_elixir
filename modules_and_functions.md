@@ -107,3 +107,66 @@ iex> fun = &List.flatten(&1, &2)
 iex> fun.([1, [[2], 3]], [4, 5])
 [1, 2, 3, 4, 5]
 ```
+
+## 引数のデフォルト値
+
+`x \\ "hello"`と定義することによって、引数のデフォルト値を定義できる
+この場合、xに"hello"というデフォルト引数を設定している
+```
+defmodule DefaultTest do
+  def dowork(x \\ "hello") do
+    x
+  end
+end
+```
+
+結果は以下の通り
+```
+iex> DefaultTest.dowork  # 引数を指定しないと、デフォルト値が適用される
+"hello"
+iex> DefaultTest.dowork 123  # 引数を指定するとその値が適用される
+123
+iex> DefaultTest.dowork
+"hello"
+```
+
+----
+
+複数の名前の関数を、デフォルト値付きで定義する場合、中身のないデフォルト値の関数定義をする必要がある
+```
+defmodule Concat do
+  # デフォルト値の関数定義
+  def join(a, b \\ nil, sep \\ " ")
+
+  def join(a, b, _sep) when is_nil(b) do
+    a
+  end
+
+  def join(a, b, sep) do
+    a <> sep <> b
+  end
+end
+
+IO.puts Concat.join("Hello", "world")      #=> Hello world
+IO.puts Concat.join("Hello", "world", "_") #=> Hello_world
+IO.puts Concat.join("Hello")               #=> Hello
+```
+
+----
+
+デフォルト値を定義する際、関数の重複定義には気をつける
+以下の例では、引数が3つの時以外は、下の関数は呼ばれない
+
+```
+defmodule Concat do
+  def join(a, b) do
+    IO.puts "***First join"
+    a <> b
+  end
+
+  def join(a, b, sep \\ " ") do
+    IO.puts "***Second join"
+    a <> sep <> b
+  end
+end
+```
