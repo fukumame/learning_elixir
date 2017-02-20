@@ -107,6 +107,7 @@ iex> fun = &List.flatten(&1, &2)
 iex> fun.([1, [[2], 3]], [4, 5])
 [1, 2, 3, 4, 5]
 ```
+`&List.flatten(&1, &2)` は `&List.flatten/2` のように書ける
 
 ## 引数のデフォルト値
 
