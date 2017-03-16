@@ -1,7 +1,7 @@
 # case, cond, if
 
 ## case
-caseは複数のパターンの中から一致するものをマッチするまで順に追う
+caseは複数のパターンの中から一致するものをマッチするまで順に追う  
 デフォルトは `_`で定義することに注意する
 
 ```
@@ -28,7 +28,7 @@ iex> case 10 do
 "Will match"
 ```
 
-caseは、追加の条件も指定できる
+caseは、追加の条件も指定できる  
 以下の例では`x > 0`のときのみマッチする
 
 ```
@@ -72,7 +72,7 @@ iex> cond do
 "But this will"
 ```
 
-条件がいずれもtrueとならない場合、エラーが発生する
+条件がいずれもtrueとならない場合、エラーが発生する  
 そのため、最後のdefault句として`true`を返すようにする
 
 ```
@@ -98,7 +98,7 @@ iex> cond do
 
 Elixirでは、case, condの他に、ifとunless, elseもある
 
-Elixirでは、それぞれの引数はコンマで区切る
+Elixirでは、それぞれの引数はコンマで区切る  
 以下の場合、関数は`if`で `do:`, `else:`は名前付き引数
 ```
 iex> if false, do: :this, else: :that
@@ -128,7 +128,7 @@ iex> is_number if true do
 ** (CompileError) undefined function: is_number/2
 ```
 
-`if true`と `do ~ end`は別々の引数とみなされる
+`if true`と `do ~ end`は別々の引数とみなされる  
 つまりプログラム上、以下の通りに解釈されている
 ```
 iex> is_number(if true) do

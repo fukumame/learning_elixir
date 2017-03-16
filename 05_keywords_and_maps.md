@@ -115,7 +115,7 @@ iex> map = %{a: 1, b: 2}
 %{a: 1, b: 2}
 ```
 
-atomで定義されたキーでアクセスする場合、以下のように`map.field`で要素を取得可能
+atomで定義されたキーでアクセスする場合、以下のように`map.field`で要素を取得可能  
 こちらの書式のほうが望ましい
 ```
 iex> map = %{:a => 1, 2 => :b}
@@ -153,7 +153,7 @@ iex> users[:john].age
 27
 ```
 
-`put_in/2`を用いるとValueの更新が可能
+`put_in/2`を用いるとValueの更新が可能  
 Johnの年齢を31歳に更新する例
 ```
 iex> users = put_in users[:john].age, 31
@@ -161,7 +161,7 @@ iex> users = put_in users[:john].age, 31
  mary: %{age: 29, languages: ["Elixir", "F#", "Clojure"], name: "Mary"}]
  ```
 
- 一方、`update_in/2`は引数に無名関数を渡してUpdateさせることができる
+ 一方、`update_in/2`は引数に無名関数を渡してUpdateさせることができる  
  無名関数`fn languages -> List.delete(languages, "Clojure") end`を渡して、languagesからClojureを削除
  ```
  iex> users = update_in users[:mary].languages, fn languages -> List.delete(languages, "Clojure") end
